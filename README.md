@@ -34,7 +34,8 @@ The configuration details of each machine may be found below.
 | Jump Box | Gateway  | 10.0.0.4   | Linux            |
 | Primary DVWA VM | Primary hosting of DVWA | 10.0.0.5 | Linux |
 | Redundant DVWA VM | Redundancy in case primary host fails | 10.0.0.6 | Linux |
-| ELK Server | System Log Collection | 10.0.0.7 | Linux |
+| ELK Server | System log collection of DVWA hosts | 10.0.0.7 | Linux |
+| Load Balancer | Web traffic balancing to DVWA hosts | 40.113.200.80 | Linux |
 
 ### Access Policies
 
@@ -50,13 +51,12 @@ A summary of the access policies in place can be found in the table below.
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
 | Jump Box | No | 104.58.31.69 |
-|          |                     |                      |
-|          |                     |                      |
+| Load Balancer | No | 104.58.31.69 |
+| ELK Server | No | 104.58.31.69 |
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because this means that small changes in the configuration can be performed and deployed as painlessly as possible.
 
 The playbook implements the following tasks:
 - _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
@@ -69,13 +69,10 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- 10.0.0.5
+- 10.0.0.6
 
-We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
-
-These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+Since beat installation was a "Bonus" objective in the project, this is treated as a future effort.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -89,5 +86,3 @@ _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 - _Which URL do you navigate to in order to check that the ELK server is running?
-
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
