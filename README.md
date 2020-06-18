@@ -28,14 +28,13 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 - _TODO: What does Metricbeat record?_
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
 | Jump Box | Gateway  | 10.0.0.4   | Linux            |
-| Primary DVWA VM    | Primary hosting of DVWA | 10.0.0.5 | Linux |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+| Primary DVWA VM | Primary hosting of DVWA | 10.0.0.5 | Linux |
+| Redundant DVWA VM | Redundancy in case primary host fails | 10.0.0.6 | Linux |
+| ELK Server | System Log Collection | 10.0.0.7 | Linux |
 
 ### Access Policies
 
