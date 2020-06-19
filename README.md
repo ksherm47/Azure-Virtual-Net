@@ -4,9 +4,7 @@ The files in this repository were used to configure the network depicted below.
 
 ![Diagram](Azure-VNet-Diagram.png)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
-
-  - _TODO: Enter the playbook file._
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the filebeat-configuration.yml file may be used to install only certain pieces of it, such as Filebeat.
 
 This document contains the following details:
 - Description of the Topologu
@@ -23,9 +21,7 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the application will be highly available, in addition to restricting arbitrary public access to the network.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
-- _TODO: What does Filebeat watch for?_
-- _TODO: What does Metricbeat record?_
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the file system and system metrics.
 
 The configuration details of each machine may be found below.
 
@@ -59,9 +55,9 @@ A summary of the access policies in place can be found in the table below.
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because this means that small changes in the configuration can be performed and deployed as painlessly as possible.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Installs Docker, Pip, and docker Python module
+- Increases the virtual memory
+- Downloads and luanches the ELK Docker conatiner (sebp/elk)
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -78,9 +74,9 @@ Since beat installation was a "Bonus" objective in the project, this is treated 
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the install-elk.yml file to /etc/ansible/files/install-elk.yml within the ansible container.
+- Update the /etc/ansible/hosts file to have the ELK server private IP under `[elkservers]` and the filebeat machines' private IP addresses under `[webservers]`.
+- Run the playbook, and navigate to your ELK server's public IP address over port 5601 from the browser to confirm the ELK server is running. 
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
