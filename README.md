@@ -77,8 +77,3 @@ SSH into the control node and follow the steps below:
 - Copy the install-elk.yml file to /etc/ansible/files/install-elk.yml within the ansible container.
 - Update the /etc/ansible/hosts file to have the ELK server private IP under `[elkservers]` and the filebeat machines' private IP addresses under `[webservers]`.
 - Run the playbook, and navigate to your ELK server's public IP address over port 5601 from the browser to confirm the ELK server is running. 
-
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
